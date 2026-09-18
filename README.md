@@ -3,12 +3,6 @@
 > **Privacy-First District Blood Donor Matching Engine**  
 > *ANAVANDI 2026 Selection Round • Challenge SC-12 (District Blood Donor Matching)*
 
-[![Next.js](https://img.shields.io/badge/Next.js-16.3.5-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19.2.8-20232A?style=for-the-badge&logo=react)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-[![Vitest](https://img.shields.io/badge/Tests-18%20Passed-brightgreen?style=for-the-badge&logo=vitest)](https://vitest.dev/)
-[![License](https://img.shields.io/badge/License-MIT-crimson?style=for-the-badge)](LICENSE)
 
 ---
 
@@ -21,34 +15,7 @@ Every year, thousands of critical medical emergencies rely on unregulated broadc
 
 **BloodUndo** solves **Challenge SC-12** by replacing indiscriminate broadcasts with a **deterministic, privacy-first district matching system**. Donors are matched strictly against blood compatibility, donation interval thresholds, and postal district radius—while contact information is cryptographically protected and revealed **only upon mutual, voluntary acceptance**.
 
----
 
-## ⚡ Core Pillars & Architectural Rules
-
-```mermaid
-flowchart TD
-    A[New Blood Requisition] --> B[Deterministic Matching Engine]
-    C[(Registered Donors)] --> B
-    
-    subgraph Engine [3-Pillar Exclusion Engine]
-        B --> D{1. Serological Matrix}
-        D -- Incompatible --> X1[EXCLUDED: Serology]
-        D -- Compatible --> E{2. Cooldown Rule}
-        
-        E -- < 90 Days Elapsed --> X2[EXCLUDED: In Cooldown]
-        E -- >= 90 Days --> F{3. District Radius}
-        
-        F -- Outside District --> X3[EXCLUDED: Location]
-        F -- Pincode / Locality / Prefix --> M[TARGETED MATCH]
-    end
-    
-    M --> N[Notify Donor Inbox with Masked Requisition]
-    N --> P{Donor Action}
-    P -- Decline --> D1[Match Dropped]
-    P -- Accept --> R[Mutual Contact Reveal]
-    
-    R --> S[Direct Patient-Donor Call Established]
-```
 
 ### 1. Serological RBC Compatibility Matrix
 Evaluates ABO and Rh(D) compatibility for Whole Blood / Packed Red Blood Cells (PRBC):
