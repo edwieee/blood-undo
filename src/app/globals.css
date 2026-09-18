@@ -1,26 +1,88 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #030304;
+    --foreground: #ffffff;
+    --brand-red: #df2531;
+    --brand-red-65: rgba(223, 37, 49, 0.65);
+    --brand-red-45: rgba(223, 37, 49, 0.45);
+    --brand-red-15: rgba(223, 37, 49, 0.15);
+    --brand-red-08: rgba(223, 37, 49, 0.08);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+    selection-background-color: #df2531;
+    selection-color: #ffffff;
+  }
+
+  ::selection {
+    background: #df2531;
+    color: #ffffff;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Technical grid background */
+.tech-grid {
+  background-size: 44px 44px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Atmospheric subtle glows */
+.radial-glow-top {
+  background: radial-gradient(circle at 50% -10%, rgba(223, 37, 49, 0.16) 0%, rgba(3, 3, 4, 0) 65%);
+}
+
+.radial-glow-hero {
+  background: radial-gradient(circle at 50% 50%, rgba(223, 37, 49, 0.09) 0%, rgba(3, 3, 4, 0) 70%);
+}
+
+.radial-glow-bottom {
+  background: radial-gradient(circle at 50% 100%, rgba(223, 37, 49, 0.12) 0%, rgba(3, 3, 4, 0) 70%);
+}
+
+/* Technical typography utility */
+.font-display {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+}
+
+/* Subtle tech border */
+.border-subtle {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.border-subtle-red {
+  border-color: rgba(223, 37, 49, 0.35);
+}
+
+/* Floating card glass surface */
+.surface-card {
+  background: rgba(13, 13, 17, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.surface-card:hover {
+  border-color: rgba(223, 37, 49, 0.3);
+}
+
+/* Custom glowing pulse for active nodes */
+@keyframes redPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(223, 37, 49, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(223, 37, 49, 0);
+  }
+}
+
+.animate-pulse-red {
+  animation: redPulse 2.4s infinite cubic-bezier(0.4, 0, 0.6, 1);
 }
