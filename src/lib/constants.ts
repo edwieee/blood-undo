@@ -21,4 +21,4 @@ export const URGENCY_LEVELS: readonly UrgencyLevel[] = [
 ] as const;
 
 export const DISCLAIMER_TEXT =
-  'BloodUndo is a district donor matching prototype designed for privacy-preserving notifications. It does not perform serological cross-matching, antibody screening, or clinical laboratory testing. Direct clinical confirmation by licensed blood bank personnel remains mandatory.';
+  'REDLINK is a donor matching prototype designed for private notifications. It does not perform blood testing, cross-matching, or medical screening. Verification by licensed blood bank personnel remains mandatory.';

@@ -18,26 +18,24 @@ export default function DonorPlaceholderPage() {
 
           <div className="space-y-2">
             <span className="text-[10px] font-mono tracking-widest text-[#df2531] uppercase">
-              MODULE READY FOR STEP 3 BACKEND INTEGRATION
+              DONOR PORTAL
             </span>
             <h1 className="font-display font-bold text-3xl text-white">
               Donor Portal & Inbox
             </h1>
-            <p className="text-sm text-white/60 font-light leading-relaxed">
-              Visual foundation and design tokens are successfully initialized.
-              The donor registration portal, 90-day cooldown status tracker, and match inbox will be wired up in Step 3.
+            <p className="text-sm text-white/70 font-light leading-relaxed">
+              Register as a donor, check your eligibility interval, and view incoming blood requests in your area.
             </p>
           </div>
 
-          <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-4 text-left font-mono text-xs text-white/60 space-y-2">
-            <div className="text-white/80 font-semibold mb-1 flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-[#df2531]" />
-              Portal Scope:
+          <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-4 text-left font-mono text-xs text-white/70 space-y-2">
+            <div className="text-white/90 font-semibold mb-1">
+              Included Features:
             </div>
-            <div>• Donor Registration (Blood Group, Location, Last Donation Date)</div>
-            <div>• Real-time Donation Eligibility Countdown Pill</div>
-            <div>• Matched Blood Requisition Inbox (With masked hospital contact)</div>
-            <div>• One-Click Request Acceptance & Mutual Contact Reveal</div>
+            <div>• Donor Registration (Blood group, locality, pincode, last donation date)</div>
+            <div>• Eligibility calculator based on last donation date</div>
+            <div>• Matched blood requests with hidden phone numbers</div>
+            <div>• Acceptance confirmation and contact exchange</div>
           </div>
 
           <div className="pt-2">

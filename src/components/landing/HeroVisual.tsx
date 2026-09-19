@@ -22,10 +22,10 @@ export const HeroVisual: React.FC = () => {
           </div>
           <div className="flex items-center gap-2">
             <Badge variant="red-subtle" size="sm">
-              ENGINE: DETERMINISTIC SC-12
+              MATCH VERIFIED
             </Badge>
             <Badge variant="neutral" size="sm">
-              ZERO-LEAKAGE ACTIVE
+              CONTACT HIDDEN
             </Badge>
           </div>
         </div>

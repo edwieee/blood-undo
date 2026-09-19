@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { DISCLAIMER_TEXT } from '../../lib/constants';
-import { ShieldAlert, HeartHandshake } from 'lucide-react';
+import { ShieldAlert } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
@@ -10,18 +10,13 @@ export const Footer: React.FC = () => {
         
         {/* Main Footer Row */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-white/[0.06]">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-7 h-7 rounded-lg bg-black border border-[#df2531]/40">
-              <span className="w-2 h-2 rounded-full bg-[#df2531]" />
-            </div>
-            <div>
-              <span className="font-display font-bold text-base text-white tracking-[0.2em] block">
-                BLOODUNDO
-              </span>
-              <span className="text-[10px] text-white/40 uppercase">
-                Privacy-First District Blood Donor Matching
-              </span>
-            </div>
+          <div>
+            <span className="font-display font-bold text-lg sm:text-xl text-white tracking-[0.22em] block">
+              REDLINK
+            </span>
+            <span className="text-[10px] text-white/40 uppercase tracking-wider mt-0.5 block">
+              Privacy-First District Blood Donor Matching
+            </span>
           </div>
 
           {/* Quick Links */}
@@ -33,32 +28,32 @@ export const Footer: React.FC = () => {
               Donor Portal
             </Link>
             <Link href="/#matching" className="hover:text-white transition-colors">
-              Matching Engine
+              How It Works
             </Link>
             <Link href="/#privacy" className="hover:text-white transition-colors">
-              Privacy Architecture
+              Privacy
             </Link>
           </div>
         </div>
 
-        {/* Mandatory Clinical Disclaimer */}
-        <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 flex items-start gap-3 text-white/50 text-[11px] leading-relaxed">
+        {/* Important Notice */}
+        <div className="rounded-lg border border-white/[0.06] bg-white/[0.02] p-4 flex items-start gap-3 text-white/50 text-[11px] leading-relaxed">
           <ShieldAlert className="w-4 h-4 text-[#df2531] shrink-0 mt-0.5" />
           <div>
             <span className="font-bold text-white/70 uppercase tracking-wider block mb-1">
-              Clinical Protocol Notice
+              Important Notice
             </span>
             {DISCLAIMER_TEXT}
           </div>
         </div>
 
-        {/* Bottom Credits & Challenge Info */}
+        {/* Bottom Credits */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-white/40 pt-4">
           <div>
-            ANAVANDI 2026 Selection Round • Challenge SC-12 (District Blood Donor Matching)
+            © 2026 REDLINK. Privacy-first blood donor matching.
           </div>
-          <div className="flex items-center gap-1 text-white/50">
-            Engineered with <span className="text-[#df2531]">♥</span> for zero-noise emergency matching.
+          <div className="text-white/40">
+            Direct, private donor matching.
           </div>
         </div>
       </div>

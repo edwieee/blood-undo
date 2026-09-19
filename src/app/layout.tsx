@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Space_Grotesk, Inter } from 'next/font/google';
 import './globals.css';
 
@@ -17,19 +17,21 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'BloodUndo — Privacy-First District Blood Donor Matching',
+  title: 'REDLINK — Privacy-First Blood Donor Matching',
   description:
-    'A privacy-first blood donor matching system. Eliminates broad broadcast spam by connecting blood requests directly with eligible, nearby donors while keeping contact details private until acceptance.',
+    'Connect urgent blood requests with eligible nearby donors privately.',
   keywords: [
-    'BloodUndo',
+    'REDLINK',
     'Blood donor matching',
-    'District blood donor matching',
-    'Privacy-first healthcare',
-    'ANAVANDI 2026',
-    'SC-12',
+    'Private blood donation',
+    'District donor network',
   ],
-  authors: [{ name: 'BloodUndo Team' }],
-  viewport: 'width=device-width, initial-scale=1',
+  authors: [{ name: 'REDLINK Team' }],
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({

@@ -64,7 +64,7 @@ export const DemoHub: React.FC = () => {
                 Test the 3 Core Exclusion Rules in 60 Seconds
               </h3>
               <p className="text-sm text-white/60 font-light mt-1 max-w-2xl">
-                Challenge SC-12 requires showing that ineligible donors are excluded while compatible nearby donors are notified with masked phone numbers.
+                Demonstrating that ineligible donors are excluded while compatible nearby donors are notified with masked phone numbers.
               </p>
             </div>
 
@@ -102,8 +102,8 @@ export const DemoHub: React.FC = () => {
                     {p.name}
                   </h4>
                   <div className="text-xs font-mono text-white/50 space-y-1 mt-2">
-                    <div>📍 {p.loc}</div>
-                    <div>⏱ Last: {p.last}</div>
+                    <div>Zone: {p.loc}</div>
+                    <div>Interval: {p.last}</div>
                   </div>
                 </div>
 
