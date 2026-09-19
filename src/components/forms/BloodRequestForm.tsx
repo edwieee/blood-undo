@@ -30,8 +30,8 @@ const initialFormState: FormState = {
 };
 
 const urgencyOptions = [
-  { value: 'urgent', label: 'Urgent (Required within 24 hours)' },
-  { value: 'normal', label: 'Normal (Standard scheduled requirement)' },
+  { value: 'urgent', label: 'Urgent — Required within 24 hours' },
+  { value: 'normal', label: 'Normal — Scheduled requirement' },
 ];
 
 export const BloodRequestForm: React.FC = () => {
@@ -46,7 +46,6 @@ export const BloodRequestForm: React.FC = () => {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear field error on change
     if (fieldErrors[name]) {
       setFieldErrors((prev) => {
         const next = { ...prev };
@@ -108,8 +107,8 @@ export const BloodRequestForm: React.FC = () => {
 
   if (isSuccess) {
     return (
-      <div className="rounded-2xl border border-white/10 bg-[#08080c] p-8 sm:p-10 shadow-2xl text-center space-y-6 max-w-xl mx-auto">
-        <div className="w-12 h-12 rounded-full bg-[#df2531]/15 border border-[#df2531]/40 flex items-center justify-center text-[#df2531] mx-auto">
+      <div className="rounded-xl border border-white/[0.08] bg-[#07070a] p-8 sm:p-10 text-center space-y-6 max-w-xl mx-auto">
+        <div className="w-12 h-12 rounded-full bg-[#df2531]/10 border border-[#df2531]/30 flex items-center justify-center text-[#df2531] mx-auto">
           <CheckCircle2 className="w-6 h-6" />
         </div>
 
@@ -120,19 +119,19 @@ export const BloodRequestForm: React.FC = () => {
           <h2 className="font-display font-bold text-2xl text-white">
             Blood Request Recorded
           </h2>
-          <p className="text-sm text-white/70 font-light leading-relaxed">
+          <p className="text-sm text-white/70 font-normal leading-relaxed">
             Your blood request has been recorded.
           </p>
         </div>
 
-        <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 text-xs font-mono text-white/60 space-y-1.5 text-left">
-          <div className="flex items-center gap-2 text-white/90 font-semibold mb-1">
+        <div className="rounded-lg border border-white/[0.06] bg-white/[0.02] p-4 text-xs text-white/70 space-y-1.5 text-left font-sans">
+          <div className="flex items-center gap-2 text-white font-medium mb-1">
             <ShieldCheck className="w-4 h-4 text-[#df2531]" />
             Request Status: Pending
           </div>
-          <div>• Request safely logged in the system with status pending.</div>
-          <div>• Requester phone number remains confidential and protected by RLS.</div>
-          <div>• Zero public broadcasting: phone numbers are never shared publicly.</div>
+          <div>• Request safely recorded in the system.</div>
+          <div>• Contact information remains strictly confidential and protected.</div>
+          <div>• Direct matching: phone numbers are never broadcast to public lists.</div>
         </div>
 
         <div className="pt-2">
@@ -145,7 +144,7 @@ export const BloodRequestForm: React.FC = () => {
   }
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-[#08080c] p-6 sm:p-10 shadow-2xl max-w-xl mx-auto">
+    <div className="rounded-xl border border-white/[0.08] bg-[#07070a] p-6 sm:p-9 max-w-xl mx-auto">
       <div className="mb-6 space-y-1.5">
         <span className="text-[10px] font-mono tracking-widest text-[#df2531] uppercase">
           REQUEST BLOOD
@@ -153,117 +152,133 @@ export const BloodRequestForm: React.FC = () => {
         <h2 className="font-display font-bold text-2xl text-white">
           Submit Blood Request
         </h2>
-        <p className="text-sm text-white/60 font-light">
+        <p className="text-sm text-white/60 font-normal leading-relaxed">
           Enter blood requirement details. Your contact information is never broadcast publicly.
         </p>
       </div>
 
       {globalError && (
-        <div className="mb-6 rounded-xl border border-[#df2531]/40 bg-[#df2531]/10 p-4 text-xs font-mono text-[#df2531] flex items-start gap-2">
+        <div className="mb-6 rounded-lg border border-[#df2531]/30 bg-[#df2531]/10 p-3.5 text-xs text-[#df2531] flex items-start gap-2">
           <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
           <span>{globalError}</span>
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-        {/* Requester Name */}
-        <Input
-          id="requester_name"
-          name="requester_name"
-          label="Requester / Patient Name"
-          placeholder="e.g. Dr. Anita / Patient Attendant"
-          value={formData.requester_name}
-          onChange={handleChange}
-          error={fieldErrors.requester_name}
-          required
-          disabled={isSubmitting}
-          autoComplete="name"
-        />
-
-        {/* Blood Group & Urgency */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <Select
-            id="blood_group"
-            name="blood_group"
-            label="Blood Group Required"
-            placeholder="Select blood group"
-            options={BLOOD_GROUPS}
-            value={formData.blood_group}
-            onChange={handleChange}
-            error={fieldErrors.blood_group}
-            required
-            disabled={isSubmitting}
-          />
-
-          <Select
-            id="urgency"
-            name="urgency"
-            label="Urgency Level"
-            options={urgencyOptions}
-            value={formData.urgency}
-            onChange={handleChange}
-            error={fieldErrors.urgency}
-            required
-            disabled={isSubmitting}
-          />
-        </div>
-
-        {/* Hospital */}
-        <Input
-          id="hospital"
-          name="hospital"
-          label="Hospital / Medical Center"
-          placeholder="e.g. City General Hospital"
-          value={formData.hospital}
-          onChange={handleChange}
-          error={fieldErrors.hospital}
-          required
-          disabled={isSubmitting}
-        />
-
-        {/* Locality & Pincode */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <Input
-            id="locality"
-            name="locality"
-            label="Locality / City"
-            placeholder="e.g. Koratty"
-            value={formData.locality}
-            onChange={handleChange}
-            error={fieldErrors.locality}
-            required
-            disabled={isSubmitting}
-          />
+      <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+        {/* SECTION 1: REQUEST DETAILS */}
+        <div className="space-y-3.5">
+          <div className="text-[11px] font-mono tracking-wider text-[#df2531] uppercase pb-1.5 border-b border-white/[0.06]">
+            Request Details
+          </div>
 
           <Input
-            id="pincode"
-            name="pincode"
-            label="Pincode"
-            placeholder="e.g. 680308"
-            maxLength={6}
-            value={formData.pincode}
+            id="requester_name"
+            name="requester_name"
+            label="Patient or Requester Name"
+            placeholder="e.g. Dr. Anita / Patient Attendant"
+            value={formData.requester_name}
             onChange={handleChange}
-            error={fieldErrors.pincode}
+            error={fieldErrors.requester_name}
+            required
+            disabled={isSubmitting}
+            autoComplete="name"
+          />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <Select
+              id="blood_group"
+              name="blood_group"
+              label="Blood Group Required"
+              placeholder="Select blood group"
+              options={BLOOD_GROUPS}
+              value={formData.blood_group}
+              onChange={handleChange}
+              error={fieldErrors.blood_group}
+              required
+              disabled={isSubmitting}
+            />
+
+            <Select
+              id="urgency"
+              name="urgency"
+              label="Urgency Level"
+              options={urgencyOptions}
+              value={formData.urgency}
+              onChange={handleChange}
+              error={fieldErrors.urgency}
+              required
+              disabled={isSubmitting}
+            />
+          </div>
+        </div>
+
+        {/* SECTION 2: HOSPITAL */}
+        <div className="space-y-3.5">
+          <div className="text-[11px] font-mono tracking-wider text-[#df2531] uppercase pb-1.5 border-b border-white/[0.06]">
+            Hospital & Location
+          </div>
+
+          <Input
+            id="hospital"
+            name="hospital"
+            label="Hospital or Medical Center"
+            placeholder="e.g. City General Hospital"
+            value={formData.hospital}
+            onChange={handleChange}
+            error={fieldErrors.hospital}
             required
             disabled={isSubmitting}
           />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <Input
+              id="locality"
+              name="locality"
+              label="Locality or City"
+              placeholder="e.g. Koratty"
+              value={formData.locality}
+              onChange={handleChange}
+              error={fieldErrors.locality}
+              required
+              disabled={isSubmitting}
+            />
+
+            <Input
+              id="pincode"
+              name="pincode"
+              label="Pincode"
+              placeholder="e.g. 680308"
+              maxLength={6}
+              value={formData.pincode}
+              onChange={handleChange}
+              error={fieldErrors.pincode}
+              required
+              disabled={isSubmitting}
+            />
+          </div>
         </div>
 
-        {/* Phone Number */}
-        <Input
-          id="phone"
-          name="phone"
-          type="tel"
-          label="Contact Phone Number"
-          placeholder="e.g. 9876543210"
-          value={formData.phone}
-          onChange={handleChange}
-          error={fieldErrors.phone}
-          helperText="Private: Never displayed publicly or shared without verified acceptance"
-          required
-          disabled={isSubmitting}
-          autoComplete="tel"
-        />
+        {/* SECTION 3: CONTACT */}
+        <div className="space-y-3.5">
+          <div className="text-[11px] font-mono tracking-wider text-[#df2531] uppercase pb-1.5 border-b border-white/[0.06]">
+            Contact & Privacy
+          </div>
+
+          <Input
+            id="phone"
+            name="phone"
+            type="tel"
+            label="Contact Phone Number"
+            placeholder="e.g. 9876543210"
+            value={formData.phone}
+            onChange={handleChange}
+            error={fieldErrors.phone}
+            helperText="Stored securely. Never displayed publicly or shared without verified donor acceptance."
+            required
+            disabled={isSubmitting}
+            autoComplete="tel"
+          />
+        </div>
 
         {/* Submit CTA */}
         <div className="pt-2">

@@ -9,11 +9,11 @@ export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/[0.06] bg-[#030304]/90 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 w-full border-b border-white/[0.06] bg-[#030304]/95">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        {/* Brand Wordmark — Primary visual anchor */}
+        {/* Brand Wordmark — Restrained tracking, confident anchor */}
         <Link href="/" className="flex items-center group py-2">
-          <span className="font-display font-bold text-xl sm:text-2xl tracking-[0.22em] text-white group-hover:text-white/90 transition-colors">
+          <span className="font-display font-bold text-xl sm:text-2xl tracking-[0.14em] text-white group-hover:text-white/90 transition-colors">
             REDLINK
           </span>
         </Link>
@@ -40,7 +40,7 @@ export const Navbar: React.FC = () => {
           </Link>
         </nav>
 
-        {/* Primary CTA — Distinct, compact, natural next action */}
+        {/* Primary CTA — Natural, compact next action */}
         <div className="hidden md:flex items-center">
           <Link href="/request">
             <Button

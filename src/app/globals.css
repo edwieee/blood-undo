@@ -26,22 +26,22 @@
   }
 }
 
-/* Technical grid background - subtle, quiet, and disciplined */
+/* Technical grid background - extremely subtle and quiet, used primarily on hero */
 .tech-grid {
   background-size: 48px 48px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
 }
 
-/* Technical typography utility */
+/* Primary heading typography */
 .font-display {
   font-family: var(--font-space-grotesk), system-ui, sans-serif;
 }
 
-/* Subtle tech border */
+/* Clean subtle borders */
 .border-subtle {
-  border-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.06);
 }
 
 .border-subtle-red {

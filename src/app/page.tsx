@@ -8,7 +8,7 @@ import { Footer } from '../components/layout/Footer';
 
 export default function LandingPage() {
   return (
-    <div className="relative min-h-screen bg-[#030304] text-white tech-grid flex flex-col justify-between selection:bg-[#df2531] selection:text-white">
+    <div className="relative min-h-screen bg-[#030304] text-white flex flex-col justify-between selection:bg-[#df2531] selection:text-white">
       {/* Navigation */}
       <Navbar />
 

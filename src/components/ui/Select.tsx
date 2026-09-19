@@ -36,7 +36,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       <div className="space-y-1.5 text-left w-full">
         <label
           htmlFor={selectId}
-          className="block font-mono text-xs uppercase tracking-wider text-white/80"
+          className="block text-xs font-medium text-white/75"
         >
           {label}
           {required && <span className="text-[#df2531] ml-1">*</span>}
@@ -51,10 +51,10 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             aria-describedby={
               error ? `${selectId}-error` : helperText ? `${selectId}-helper` : undefined
             }
-            className={`w-full appearance-none rounded-xl border bg-[#08080c] px-4 py-3 text-sm text-white transition-all duration-200 outline-none focus:ring-2 focus:ring-[#df2531]/50 disabled:opacity-50 disabled:cursor-not-allowed ${
+            className={`w-full appearance-none rounded-lg border bg-[#08080c] px-3.5 py-2.5 text-sm text-white transition-colors duration-150 outline-none focus:ring-1 focus:ring-[#df2531]/40 disabled:opacity-50 disabled:cursor-not-allowed ${
               error
                 ? 'border-[#df2531]/80 focus:border-[#df2531]'
-                : 'border-white/15 hover:border-white/25 focus:border-[#df2531]/60'
+                : 'border-white/10 hover:border-white/20 focus:border-[#df2531]/70'
             } ${className}`}
             {...props}
           >
@@ -74,24 +74,24 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             })}
           </select>
           {/* Custom chevron indicator */}
-          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-white/50">
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-white/40">
             <svg
               className="h-4 w-4"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 9l-7 7-7-7" />
             </svg>
           </div>
         </div>
         {error && (
-          <p id={`${selectId}-error`} className="font-mono text-xs text-[#df2531] flex items-center gap-1">
+          <p id={`${selectId}-error`} className="text-xs text-[#df2531] flex items-center gap-1 mt-1">
             {error}
           </p>
         )}
         {!error && helperText && (
-          <p id={`${selectId}-helper`} className="font-mono text-[11px] text-white/50">
+          <p id={`${selectId}-helper`} className="text-[11px] text-white/50 leading-normal mt-1">
             {helperText}
           </p>
         )}

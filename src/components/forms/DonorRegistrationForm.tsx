@@ -39,7 +39,6 @@ export const DonorRegistrationForm: React.FC = () => {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear field error on change
     if (fieldErrors[name]) {
       setFieldErrors((prev) => {
         const next = { ...prev };
@@ -99,13 +98,12 @@ export const DonorRegistrationForm: React.FC = () => {
     setGlobalError(null);
   };
 
-  // Today's date string for HTML date input max attribute
   const todayDateString = new Date().toISOString().split('T')[0];
 
   if (isSuccess) {
     return (
-      <div className="rounded-2xl border border-white/10 bg-[#08080c] p-8 sm:p-10 shadow-2xl text-center space-y-6 max-w-xl mx-auto">
-        <div className="w-12 h-12 rounded-full bg-[#df2531]/15 border border-[#df2531]/40 flex items-center justify-center text-[#df2531] mx-auto">
+      <div className="rounded-xl border border-white/[0.08] bg-[#07070a] p-8 sm:p-10 text-center space-y-6 max-w-xl mx-auto">
+        <div className="w-12 h-12 rounded-full bg-[#df2531]/10 border border-[#df2531]/30 flex items-center justify-center text-[#df2531] mx-auto">
           <CheckCircle2 className="w-6 h-6" />
         </div>
 
@@ -116,19 +114,19 @@ export const DonorRegistrationForm: React.FC = () => {
           <h2 className="font-display font-bold text-2xl text-white">
             Registration Confirmed
           </h2>
-          <p className="text-sm text-white/70 font-light leading-relaxed">
+          <p className="text-sm text-white/70 font-normal leading-relaxed">
             Your donor information has been securely saved.
           </p>
         </div>
 
-        <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 text-xs font-mono text-white/60 space-y-1.5 text-left">
-          <div className="flex items-center gap-2 text-white/90 font-semibold mb-1">
+        <div className="rounded-lg border border-white/[0.06] bg-white/[0.02] p-4 text-xs text-white/70 space-y-1.5 text-left font-sans">
+          <div className="flex items-center gap-2 text-white font-medium mb-1">
             <ShieldCheck className="w-4 h-4 text-[#df2531]" />
             Privacy Protection Active
           </div>
-          <div>• Your contact phone number is strictly encrypted and private.</div>
-          <div>• No phone number is ever broadcast or visible in public queries.</div>
-          <div>• You will be privately alerted when a compatible request matches your profile.</div>
+          <div>• Contact phone numbers are encrypted and strictly private.</div>
+          <div>• No phone number is ever broadcast to public lists or social channels.</div>
+          <div>• You will be privately alerted only when a nearby compatible request is recorded.</div>
         </div>
 
         <div className="pt-2">
@@ -141,7 +139,7 @@ export const DonorRegistrationForm: React.FC = () => {
   }
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-[#08080c] p-6 sm:p-10 shadow-2xl max-w-xl mx-auto">
+    <div className="rounded-xl border border-white/[0.08] bg-[#07070a] p-6 sm:p-9 max-w-xl mx-auto">
       <div className="mb-6 space-y-1.5">
         <span className="text-[10px] font-mono tracking-widest text-[#df2531] uppercase">
           DONOR REGISTRATION
@@ -149,105 +147,128 @@ export const DonorRegistrationForm: React.FC = () => {
         <h2 className="font-display font-bold text-2xl text-white">
           Become a Blood Donor
         </h2>
-        <p className="text-sm text-white/60 font-light">
+        <p className="text-sm text-white/60 font-normal leading-relaxed">
           Register with your blood group and locality. Your contact details remain private.
         </p>
       </div>
 
       {globalError && (
-        <div className="mb-6 rounded-xl border border-[#df2531]/40 bg-[#df2531]/10 p-4 text-xs font-mono text-[#df2531] flex items-start gap-2">
+        <div className="mb-6 rounded-lg border border-[#df2531]/30 bg-[#df2531]/10 p-3.5 text-xs text-[#df2531] flex items-start gap-2">
           <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
           <span>{globalError}</span>
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-        {/* Full Name */}
-        <Input
-          id="name"
-          name="name"
-          label="Full Name"
-          placeholder="e.g. Rahul Sharma"
-          value={formData.name}
-          onChange={handleChange}
-          error={fieldErrors.name}
-          required
-          disabled={isSubmitting}
-          autoComplete="name"
-        />
+      <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+        {/* SECTION 1: YOUR DETAILS */}
+        <div className="space-y-3.5">
+          <div className="text-[11px] font-mono tracking-wider text-[#df2531] uppercase pb-1.5 border-b border-white/[0.06]">
+            Your Details
+          </div>
 
-        {/* Blood Group */}
-        <Select
-          id="blood_group"
-          name="blood_group"
-          label="Blood Group"
-          placeholder="Select blood group"
-          options={BLOOD_GROUPS}
-          value={formData.blood_group}
-          onChange={handleChange}
-          error={fieldErrors.blood_group}
-          required
-          disabled={isSubmitting}
-        />
-
-        {/* Locality & Pincode */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Input
-            id="locality"
-            name="locality"
-            label="Locality / City"
-            placeholder="e.g. Koratty"
-            value={formData.locality}
+            id="name"
+            name="name"
+            label="Full Name"
+            placeholder="e.g. Rahul Sharma"
+            value={formData.name}
             onChange={handleChange}
-            error={fieldErrors.locality}
+            error={fieldErrors.name}
             required
             disabled={isSubmitting}
+            autoComplete="name"
           />
 
-          <Input
-            id="pincode"
-            name="pincode"
-            label="Pincode"
-            placeholder="e.g. 680308"
-            maxLength={6}
-            value={formData.pincode}
+          <Select
+            id="blood_group"
+            name="blood_group"
+            label="Blood Group"
+            placeholder="Select blood group"
+            options={BLOOD_GROUPS}
+            value={formData.blood_group}
             onChange={handleChange}
-            error={fieldErrors.pincode}
+            error={fieldErrors.blood_group}
             required
             disabled={isSubmitting}
           />
         </div>
 
-        {/* Last Donation Date */}
-        <Input
-          id="last_donation_date"
-          name="last_donation_date"
-          type="date"
-          label="Last Donation Date"
-          max={todayDateString}
-          value={formData.last_donation_date}
-          onChange={handleChange}
-          error={fieldErrors.last_donation_date}
-          helperText="Select the date of your most recent blood donation"
-          required
-          disabled={isSubmitting}
-        />
+        {/* SECTION 2: LOCATION */}
+        <div className="space-y-3.5">
+          <div className="text-[11px] font-mono tracking-wider text-[#df2531] uppercase pb-1.5 border-b border-white/[0.06]">
+            Location
+          </div>
 
-        {/* Phone Number */}
-        <Input
-          id="phone"
-          name="phone"
-          type="tel"
-          label="Mobile Phone Number"
-          placeholder="e.g. 9876543210"
-          value={formData.phone}
-          onChange={handleChange}
-          error={fieldErrors.phone}
-          helperText="Private: Never displayed publicly or shared without your explicit consent"
-          required
-          disabled={isSubmitting}
-          autoComplete="tel"
-        />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <Input
+              id="locality"
+              name="locality"
+              label="Locality or City"
+              placeholder="e.g. Koratty"
+              value={formData.locality}
+              onChange={handleChange}
+              error={fieldErrors.locality}
+              required
+              disabled={isSubmitting}
+            />
+
+            <Input
+              id="pincode"
+              name="pincode"
+              label="Pincode"
+              placeholder="e.g. 680308"
+              maxLength={6}
+              value={formData.pincode}
+              onChange={handleChange}
+              error={fieldErrors.pincode}
+              required
+              disabled={isSubmitting}
+            />
+          </div>
+        </div>
+
+        {/* SECTION 3: ELIGIBILITY */}
+        <div className="space-y-3.5">
+          <div className="text-[11px] font-mono tracking-wider text-[#df2531] uppercase pb-1.5 border-b border-white/[0.06]">
+            Eligibility
+          </div>
+
+          <Input
+            id="last_donation_date"
+            name="last_donation_date"
+            type="date"
+            label="Last Donation Date"
+            max={todayDateString}
+            value={formData.last_donation_date}
+            onChange={handleChange}
+            error={fieldErrors.last_donation_date}
+            helperText="Date of your most recent blood donation. Used to calculate safe 90-day cooldown."
+            required
+            disabled={isSubmitting}
+          />
+        </div>
+
+        {/* SECTION 4: CONTACT */}
+        <div className="space-y-3.5">
+          <div className="text-[11px] font-mono tracking-wider text-[#df2531] uppercase pb-1.5 border-b border-white/[0.06]">
+            Contact & Privacy
+          </div>
+
+          <Input
+            id="phone"
+            name="phone"
+            type="tel"
+            label="Mobile Phone Number"
+            placeholder="e.g. 9876543210"
+            value={formData.phone}
+            onChange={handleChange}
+            error={fieldErrors.phone}
+            helperText="Stored securely. Never displayed publicly or shared without verified acceptance."
+            required
+            disabled={isSubmitting}
+            autoComplete="tel"
+          />
+        </div>
 
         {/* Submit CTA */}
         <div className="pt-2">

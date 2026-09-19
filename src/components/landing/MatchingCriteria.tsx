@@ -6,36 +6,42 @@ import { Check } from 'lucide-react';
 export const MatchingCriteria: React.FC = () => {
   const criteria = [
     {
-      num: '01',
+      num: 'RULE 01',
       category: 'BLOOD GROUP',
       headline: 'Compatible donors only.',
-      desc: 'Match the requested blood group with eligible donors.',
+      desc: 'Blood requests are evaluated against medical compatibility matrices before notifications are sent.',
+      visualLabel: 'Serology Logic',
+      visualFormula: 'O− request → O− donors (Exact) or compatible serology',
       bullets: [
-        'Blood group checked',
-        'Compatible donors considered',
+        'ABO & Rh factor matched',
+        'Compatible blood groups included',
         'Incompatible donors excluded',
       ],
     },
     {
-      num: '02',
+      num: 'RULE 02',
       category: 'LOCATION',
       headline: 'Nearby donors first.',
-      desc: 'Use locality and pincode to find donors near the request.',
+      desc: 'Requests prioritize donors in the same locality and postal code radius to minimize travel time.',
+      visualLabel: 'Location Logic',
+      visualFormula: 'PIN 680308 → Nearby donors within district radius',
       bullets: [
-        'Locality checked',
-        'Pincode compared',
-        'Nearby matches prioritized',
+        'Hospital locality compared',
+        'Postal code distance evaluated',
+        'Nearest eligible donors notified',
       ],
     },
     {
-      num: '03',
+      num: 'RULE 03',
       category: 'DONATION INTERVAL',
       headline: 'Only eligible donors.',
-      desc: 'Donors who donated too recently are excluded from matching.',
+      desc: 'Donors who donated blood within the 90-day cooldown period are safely protected and excluded.',
+      visualLabel: 'Interval Logic',
+      visualFormula: 'Last donation > 90 days → Eligible to donate',
       bullets: [
-        'Last donation date checked',
-        'Eligibility calculated',
-        'Recently donating donors excluded',
+        'Last donation date verified',
+        'Safe recovery interval enforced',
+        'Cooldown-active donors protected',
       ],
     },
   ];
@@ -53,8 +59,8 @@ export const MatchingCriteria: React.FC = () => {
             <br />
             <span className="text-white/60">The right donor.</span>
           </h2>
-          <p className="mt-3 text-base text-white/70 font-light leading-relaxed">
-            Three criteria determine which donors receive a request.
+          <p className="mt-3 text-base text-white/70 font-normal leading-relaxed">
+            Three medical and logistical criteria determine which donors receive a request.
           </p>
         </div>
 
@@ -63,17 +69,17 @@ export const MatchingCriteria: React.FC = () => {
           {criteria.map((item) => (
             <div
               key={item.num}
-              className="rounded-xl border border-white/[0.08] bg-[#09090c] p-6 sm:p-7 flex flex-col justify-between hover:border-white/20 transition-colors"
+              className="rounded-lg border border-white/[0.06] bg-[#07070a] p-6 sm:p-7 flex flex-col justify-between"
             >
               <div>
-                {/* Number */}
-                <div className="font-mono text-2xl font-bold text-[#df2531] mb-4">
-                  {item.num}
-                </div>
-
-                {/* Category */}
-                <div className="text-xs font-mono tracking-widest text-white/50 uppercase mb-1">
-                  {item.category}
+                {/* Rule Label */}
+                <div className="flex items-center justify-between mb-4">
+                  <span className="font-mono text-xs text-[#df2531] uppercase tracking-wider">
+                    {item.num}
+                  </span>
+                  <span className="font-mono text-[10px] text-white/40 uppercase tracking-wider">
+                    {item.category}
+                  </span>
                 </div>
 
                 {/* Headline */}
@@ -82,13 +88,23 @@ export const MatchingCriteria: React.FC = () => {
                 </h3>
 
                 {/* Supporting Explanation */}
-                <p className="text-sm text-white/70 leading-relaxed mb-6 font-light">
+                <p className="text-sm text-white/70 leading-relaxed mb-5 font-normal">
                   {item.desc}
                 </p>
+
+                {/* Visual Matching Logic Representation */}
+                <div className="rounded border border-white/[0.05] bg-white/[0.02] p-3 mb-5">
+                  <div className="text-[10px] font-mono text-white/40 uppercase tracking-wider mb-1">
+                    {item.visualLabel}
+                  </div>
+                  <div className="text-xs text-white/90 font-medium font-mono">
+                    {item.visualFormula}
+                  </div>
+                </div>
               </div>
 
-              {/* 3 Verification Points */}
-              <ul className="space-y-2 pt-4 border-t border-white/[0.06] text-xs font-mono text-white/80">
+              {/* Verification Points in clean sans-serif */}
+              <ul className="space-y-2 pt-4 border-t border-white/[0.06] text-xs text-white/70 font-normal">
                 {item.bullets.map((bullet, idx) => (
                   <li key={idx} className="flex items-start gap-2">
                     <Check className="w-3.5 h-3.5 text-[#df2531] shrink-0 mt-0.5" />

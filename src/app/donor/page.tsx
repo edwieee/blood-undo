@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function DonorPage() {
   return (
-    <div className="min-h-screen bg-[#030304] text-white tech-grid flex flex-col justify-between">
+    <div className="min-h-screen bg-[#030304] text-white flex flex-col justify-between">
       <Navbar />
 
       <main className="flex-1 flex flex-col items-center justify-center py-12 sm:py-16 px-4">

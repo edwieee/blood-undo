@@ -12,7 +12,7 @@ export const ActionCTA: React.FC = () => {
           <h2 className="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight">
             Ready to get started?
           </h2>
-          <p className="mt-3 text-base text-white/70 font-light leading-relaxed">
+          <p className="mt-3 text-base text-white/70 font-normal leading-relaxed">
             Connect urgent blood requests with eligible nearby donors privately.
           </p>
         </div>
@@ -20,7 +20,7 @@ export const ActionCTA: React.FC = () => {
         {/* Dual Paths Action Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
           {/* Card 1: Request Blood */}
-          <div className="rounded-xl border border-white/[0.08] bg-[#09090c] p-6 sm:p-7 flex flex-col justify-between hover:border-white/20 transition-colors">
+          <div className="rounded-lg border border-white/[0.06] bg-[#07070a] p-6 sm:p-7 flex flex-col justify-between">
             <div>
               <div className="text-[10px] font-mono uppercase tracking-widest text-[#df2531] mb-2">
                 REQUEST
@@ -28,7 +28,7 @@ export const ActionCTA: React.FC = () => {
               <h3 className="font-display font-semibold text-xl text-white mb-2">
                 Request Blood
               </h3>
-              <p className="text-sm text-white/70 leading-relaxed font-light mb-6">
+              <p className="text-sm text-white/70 leading-relaxed font-normal mb-6">
                 Submit an urgent request with blood group, pincode, and locality.
                 Only eligible, compatible nearby donors are notified.
               </p>
@@ -43,7 +43,7 @@ export const ActionCTA: React.FC = () => {
           </div>
 
           {/* Card 2: Become a Donor */}
-          <div className="rounded-xl border border-white/[0.08] bg-[#09090c] p-6 sm:p-7 flex flex-col justify-between hover:border-white/20 transition-colors">
+          <div className="rounded-lg border border-white/[0.06] bg-[#07070a] p-6 sm:p-7 flex flex-col justify-between">
             <div>
               <div className="text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">
                 DONOR
@@ -51,7 +51,7 @@ export const ActionCTA: React.FC = () => {
               <h3 className="font-display font-semibold text-xl text-white mb-2">
                 Become a Donor
               </h3>
-              <p className="text-sm text-white/70 leading-relaxed font-light mb-6">
+              <p className="text-sm text-white/70 leading-relaxed font-normal mb-6">
                 Register your blood group and location. You will only be notified when a nearby request matches your group and interval.
               </p>
             </div>
