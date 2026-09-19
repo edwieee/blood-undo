@@ -38,12 +38,6 @@ export const Navbar: React.FC = () => {
           >
             Become a Donor
           </Link>
-          <Link
-            href="/donor"
-            className="hover:text-white transition-colors duration-200"
-          >
-            Find a Donor
-          </Link>
         </nav>
 
         {/* Right CTA */}
@@ -89,13 +83,6 @@ export const Navbar: React.FC = () => {
               className="hover:text-white py-1"
             >
               Become a Donor
-            </Link>
-            <Link
-              href="/donor"
-              onClick={() => setMobileMenuOpen(false)}
-              className="hover:text-white py-1"
-            >
-              Find a Donor
             </Link>
           </nav>
           <div className="pt-2">

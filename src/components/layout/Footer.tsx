@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
               Request Blood
             </Link>
             <Link href="/donor" className="hover:text-white transition-colors">
-              Donor Portal
+              Become a Donor
             </Link>
             <Link href="/#matching" className="hover:text-white transition-colors">
               How It Works
