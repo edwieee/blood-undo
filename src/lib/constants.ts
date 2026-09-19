@@ -14,10 +14,9 @@ export const BLOOD_GROUPS: readonly BloodGroup[] = [
   'O-',
 ] as const;
 
-export const URGENCY_LEVELS: readonly UrgencyLevel[] = [
-  'CRITICAL',
-  'URGENT',
-  'STANDARD',
+export const URGENCY_LEVELS = [
+  'urgent',
+  'normal',
 ] as const;
 
 export const DISCLAIMER_TEXT =
